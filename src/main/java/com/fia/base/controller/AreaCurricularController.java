@@ -47,6 +47,12 @@ public class AreaCurricularController {
         model.addAttribute("areasCurriculares", areasCurriculares);
         return "Designar";
     }
+    
+    @GetMapping("/home")
+    public String home(Model model) {
+        
+        return "AdminHome";
+    }
 
     @GetMapping("/asignaturas-por-area")
     public String mostrarAsignaturasPorArea(@RequestParam("areaId") Long areaId, Model model) {

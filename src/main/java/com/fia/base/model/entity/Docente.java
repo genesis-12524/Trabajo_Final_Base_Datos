@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
@@ -24,11 +25,41 @@ public class Docente {
 	    private String nom;
 	    private String ape;
 	    private String gradoA;
+	    public String getCorreo() {
+			return correo;
+		}
+
+		public void setCorreo(String correo) {
+			this.correo = correo;
+		}
+
+		public String getContrasena() {
+			return contrasena;
+		}
+
+		public void setContrasena(String contrasena) {
+			this.contrasena = contrasena;
+		}
+
+		public Rol getRol() {
+			return rol;
+		}
+
+		public void setRol(Rol rol) {
+			this.rol = rol;
+		}
+
+		private String correo;
+	    private String contrasena;
 
 	    
 
 	    @OneToMany(mappedBy = "docente", cascade = CascadeType.ALL, orphanRemoval = true)
 	    private List<Silabo> silabos;
+	    
+	    @ManyToOne
+	    @JoinColumn(name = "rol_id")
+	    private Rol rol;
 
 	    
 	    private String estado_encargado;

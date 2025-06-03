@@ -1,10 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title th:text="${titulo}">Iniciar Sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: #f3f3f3;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            border-top: 5px solid #D32F2F;
+        }
+        .login-title {
+            text-align: center;
+            color: #D32F2F;
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+        }
+        .role-badge {
+            display: block;
+            text-align: center;
+            background-color: #D32F2F;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            font-size: 14px;
+        }
+        .password-container {
+            position: relative;
+        }
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 14px;
+            cursor: pointer;
+            color: #777;
+        }
+        .login-btn {
+            background-color: #D32F2F;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            font-weight: bold;
+            border-radius: 25px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .login-btn:hover {
+            background-color: #B71C1C;
+        }
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .forgot-password a {
+            color: #D32F2F;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .error-message {
+            color: #D32F2F;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+    </style>
 </head>
 <body>
+    <div class="login-container">
+        <h2 class="login-title">Iniciar Sesión</h2>
+        <span class="role-badge" th:text="'Como ' + ${rolNombre}"></span>
+        
+        <form th:action="@{/procesar-login}" method="post" th:object="${UsuarioLoginDto}">
+            <input type="email" class="form-input" th:field="*{correo}" placeholder="Correo electrónico" required>
+            
+            <div class="password-container">
+                <input type="password" class="form-input" th:field="*{contrasena}" placeholder="Contraseña" required>
+                <span class="toggle-password" onclick="togglePassword(this)">👁️</span>
+            </div>
+            <input type="hidden" name="rolId" th:value="${rolId}">
+            <
+            <button type="submit" class="login-btn">Acceder</button>
+            
+            <div class="forgot-password">
+                <a href="#">¿Olvidaste tu contraseña?</a>
+            </div>
+            
+            <div class="error-message" th:if="${error}" >⚠️ <span th:text="${error}"></span></div>
+        </form>
+    </div>
 
+    <script>
+        function togglePassword(element) {
+            const input = element.previousElementSibling;
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+    </script>
 </body>
 </html>

@@ -1,99 +1,78 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Comité USMP</title>
-  <link rel="stylesheet" th:href="@{/css/styles.css}">
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <title>Comité</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #ccc;
+        }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+            color: black;
+        }
+        .main-title {
+            font-size: 48px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+        .subtitle {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .btn {
+            background-color: #ff5c5c;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            cursor: pointer;
+            min-width: 200px;
+        }
+        .btn:hover {
+            background-color: #ff3b3b;
+        }
+        .logo {
+            height: 50px;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <img src="images/logo.png" alt="Logo" class="logo">
+        <nav>
+            <a href="#">DOCUMENTOS</a>
+            <a href="#">EVENTOS</a>
+            <a th:href="@{/seleccionar-rol}">INICIAR SESIÓN</a>
+        </nav>
+    </header>
 
-  <div w3-include-html="header.html"></div>
+    <div class="main-title">Comité</div>
+    <div class="subtitle">Universidad De San Martín de Porres</div>
 
-  <main class="hero">
-    <div class="overlay">
-      <h1 class="title">COMITÉ</h1>
-      <p class="subtitle">Universidad De San Martín de Porres</p>
-      <div class="buttons">
-        <button class="btn"><i class="fa fa-cog"></i> Encargados de Áreas</button>
-        <button class="btn"><i class="fa fa-book"></i> Áreas curriculares</button>
-      </div>
+    <div class="btn-container">
+        <button class="btn">Encargados de Áreas</button>
+        <button class="btn">Áreas curriculares</button>
     </div>
-    <div class="divider"></div>
-  </main>
-
-  <section class="area-section">
-    <h2 class="section-title">Encargados de Áreas</h2>
-    <div class="cards-grid">
-      <div class="card">
-        <h3>Dr. Luis Cárdenas</h3>
-        <p class="role">Decano de la Facultad de Ingeniería y Arquitectura</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>Dr. Luis Celi Saavedra</h3>
-        <p class="role">Jefe del departamento académico</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>Ing. Rúben Osvaldo García Farje</h3>
-        <p class="role">Director de la escuela EPICS</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>Dr. Jorge Tejada Polo</h3>
-        <p class="role">Jefe de la Unidad de Acreditación y Calidad</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>Ing. William Acosta</h3>
-        <p class="role">Jefe de la Área de Curricular de Matemáticas y Ciencias</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>1</h3>
-        <p class="role">Jefe de la Área de Curricular de Matemáticas y Ciencias</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>1</h3>
-        <p class="role">Jefe de la Área de Curricular de Matemáticas y Ciencias</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-      <div class="card">
-        <h3>1</h3>
-        <p class="role">Jefe de la Área de Curricular de Matemáticas y Ciencias</p>
-        <p class="email">📧 lcardenas@usmp.pe</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="curricular-areas">
-    <div class="curricular-overlay">
-      <h2 class="section-title-light">Áreas Curriculares</h2>
-      <div class="area-grid">
-        <div class="area-box">Matemáticas y Ciencias</div>
-        <div class="area-box">Sistemas de Información</div>
-        <div class="area-box">Humanidades</div>
-        <div class="area-box">Ciencias de la Computación</div>
-        <div class="area-box">Métodos Cuantitativos</div>
-        <div class="area-box">Tecnología de Información</div>
-        <div class="area-box">Gestión</div>
-        <div class="area-box">Ingeniería de Software</div>
-      </div>
-    </div>
-  </section>
-
-
-  <div w3-include-html="footer.html"></div>
-
-  <script src="scripts.js"></script>
-  <script>
-    includeHTML();
-  </script>
-  
-  
 </body>
 </html>
