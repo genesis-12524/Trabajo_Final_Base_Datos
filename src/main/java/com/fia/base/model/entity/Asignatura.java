@@ -19,7 +19,7 @@ public class Asignatura {
     private Long id;
 
     private String nombre;
-
+private String codigo;
     @ManyToOne
     @JoinColumn(name = "area_curri_id")
     private AreaCurri areaCurri;
